@@ -77,6 +77,8 @@
           </elementProp>
         </collectionProp>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
       <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="util_PostProcessor">
@@ -235,7 +237,7 @@ if (props.get(&apos;noRegistoPeriodoConfirmacao&apos;) == &quot;true&quot;) {
         <stringProp name="scriptLanguage">groovy</stringProp>
       </JSR223PostProcessor>
       <hashTree/>
-      <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CAP_COMPROVATIVO">
+      <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="CAP_COMPROVATIVO" enabled="true">
         <stringProp name="cacheKey">true</stringProp>
         <stringProp name="filename"></stringProp>
         <stringProp name="parameters"></stringProp>
@@ -275,7 +277,7 @@ if (props.get(&apos;noRegistoPeriodoConfirmacao&apos;) == &quot;true&quot;) {
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="devConnection ">
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="devConnection " enabled="true">
         <boolProp name="autocommit">true</boolProp>
         <stringProp name="checkQuery"></stringProp>
         <stringProp name="connectionAge">5000</stringProp>
@@ -294,7 +296,7 @@ if (props.get(&apos;noRegistoPeriodoConfirmacao&apos;) == &quot;true&quot;) {
         <stringProp name="username">idq</stringProp>
       </JDBCDataSource>
       <hashTree/>
-      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="GUS_APP">
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="GUS_APP" enabled="true">
         <boolProp name="autocommit">true</boolProp>
         <stringProp name="checkQuery"></stringProp>
         <stringProp name="connectionAge">5000</stringProp>
@@ -470,7 +472,7 @@ if (sampler instanceof HTTPSamplerProxy) {
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ORQUESTRADOR">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ORQUESTRADOR" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -481,7 +483,7 @@ if (sampler instanceof HTTPSamplerProxy) {
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname=".ENV">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname=".ENV" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="NISS_EE" elementType="Argument">
               <stringProp name="Argument.name">NISS_EE</stringProp>
@@ -577,7 +579,7 @@ if (sampler instanceof HTTPSamplerProxy) {
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname=".ENV_BATCH">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname=".ENV_BATCH" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="BASE_URL_BATCH" elementType="Argument">
               <stringProp name="Argument.name">BASE_URL_BATCH</stringProp>
@@ -592,7 +594,7 @@ if (sampler instanceof HTTPSamplerProxy) {
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Header">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Header" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Authorization</stringProp>
@@ -605,7 +607,7 @@ if (sampler instanceof HTTPSamplerProxy) {
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="version_webApp">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="version_webApp" enabled="true">
           <stringProp name="HTTPSampler.domain">devapp.seg-social.pt</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -659,6 +661,16 @@ if (sampler instanceof HTTPSamplerProxy) {
       &quot;valor&quot;: ${__Random(-99,90)}.${__Random(0,9)},&#xd;
       &quot;numeroPedido&quot;: 234567890102025000000,&#xd;
       &quot;acerto&quot;: &quot;SIM&quot;&#xd;
+    },&#xd;
+        {&#xd;
+      &quot;nissTrabalhador&quot;: ${nissPSgerado},&#xd;
+      &quot;anoMes&quot;: &quot;${anoMes}&quot;,&#xd;
+      &quot;tipoQualificacao&quot;: &quot;MOE&quot;,&#xd;
+      &quot;naturezaRemuneracao&quot;: &quot;B&quot;,&#xd;
+      &quot;dias&quot;: ${__Random(1,29)},&#xd;
+      &quot;valor&quot;: ${__Random(-99,90)}.${__Random(0,9)},&#xd;
+      &quot;numeroPedido&quot;: 234567890102025000000,&#xd;
+      &quot;acerto&quot;: &quot;SIM&quot;&#xd;
     }&#xd;
   ]&#xd;
 }</stringProp>
@@ -680,6 +692,13 @@ vars.put(&apos;anoMes&apos;, anoAtual + mesAleatorio)
 
 props.put(&apos;CAPCOMPROVATIVO&apos;,&quot;true&quot;)</stringProp>
             </JSR223PreProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor">
+              <stringProp name="JSONPostProcessor.referenceNames">comprovativoEntrega</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.comprovativoEntrega</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NOT_FOUND</stringProp>
+            </JSONPostProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CALL BATCH" enabled="true">
@@ -715,7 +734,7 @@ JOIN EEAOC.VALOR_COMUNICADO_DIFERENCA v
     ON e.id_entidade_comunicada = v.id_entidade_comunicada
 JOIN EEAOC.rel_alerta_valor_comun_dif alt
 ON v.ID_VALOR_COMUNICADO_DIFERENCA = alt.ID_VALOR_COMUNICADO_DIFERENCA
-where e.COMPROVATIVO_ENTREGA = &apos;409e2611-a8c4-4917-9813-17bedb87dacd&apos;
+where e.COMPROVATIVO_ENTREGA = &apos;${comprovativoEntrega}&apos;
 --&apos;${comprovativosEntrega}&apos;</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
@@ -727,7 +746,7 @@ where e.COMPROVATIVO_ENTREGA = &apos;409e2611-a8c4-4917-9813-17bedb87dacd&apos;
             <stringProp name="variableNames">ID_ENTIDADE_COMUNICADA, NISS_EE, COMPROVATIVO_ENTREGA, NISS_PS, ID_REL_ALERTA_VALOR_COMUN_DIF, TEMA, TEMA_HISTORICO_MENSAL</stringProp>
           </JDBCSampler>
           <hashTree>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="hasData">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="hasData" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -745,7 +764,7 @@ if (hasCount == 2) {
 </stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">3000</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -772,7 +791,7 @@ if (hasCount == 2) {
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Header">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Header" enabled="true">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -784,6 +803,30 @@ if (hasCount == 2) {
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+
+def json = new JsonSlurper().parseText(prev.getResponseDataAsString())
+
+def alertasEsperados = [
+    &apos;Comunicação duplicada.&apos;,
+    &apos;NISS inválido.&apos;
+]
+
+def alertasRetornados = json*.resumoAlerta
+
+def faltantes = alertasEsperados.findAll { !(it in alertasRetornados) }
+
+if (faltantes) {
+    prev.setSuccessful(false)
+    prev.setResponseMessage(&quot;Alertas não encontrados: ${faltantes.join(&apos;, &apos;)}&quot;)
+}</stringProp>
+            </JSR223PostProcessor>
             <hashTree/>
           </hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="GUS.SERVICE_AUDIT_RESPONSE | GUS.SERVICE_AUDIT ">
